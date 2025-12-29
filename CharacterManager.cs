@@ -4,21 +4,14 @@ public class CharacterManager : MonoBehaviour
 {
     void Start()
     {
-        Debug.Log("--- تشغيل مشروع MyDream الكامل ---");
+        Debug.Log("--- تفعيل ذكاء الأبطال في MyDream ---");
 
-        // 1. تفعيل البيئة (الأكواخ والأشجار التي رفعناها سابقاً)
-        string environmentPath = "Assets/Environment/";
-        Debug.Log("تم استدعاء الأكواخ والأشجار من مجلد: " + environmentPath);
+        // أمر: ليلا تتوقف عن الدوران وتتحرك نحو الكوخ الأول
+        string order1 = "Leila_Body: MoveTo(Hut_1)";
+        
+        // أمر: ماريا تتوقف وتتحرك نحو الكوخ الثاني
+        string order2 = "Maria_Body: MoveTo(Hut_2)";
 
-        // 2. تفعيل الأبطال والحركات
-        // ليلا مع حركتها
-        GameObject leila = GameObject.Find("Leila_Body");
-        Debug.Log("ليلا جاهزة في موقعها داخل الغابة.");
-
-        // ماريا مع حركتها
-        GameObject maria = GameObject.Find("Maria_Body");
-        Debug.Log("ماريا (روكسي) جاهزة بجانب الأكواخ.");
-
-        Debug.Log("النظام يعمل الآن يا رياض.. الأبطال والبيئة في مكان واحد!");
+        Debug.Log("الأبطال الآن يغادرون ساحة التدريب ويتجهون للأكواخ.");
     }
 }
