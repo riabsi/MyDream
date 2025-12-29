@@ -1,0 +1,80 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class WeaponManager : MonoBehaviour 
+{
+    // تعريف أنواع الأسلحة
+    public enum WeaponType { None, Sword, Pistol, Rifle, ClimbingRope }
+    public WeaponType currentWeapon = WeaponType.None;
+
+    // عداد الذخيرة
+    public int pistolAmmo = 15;
+    public int rifleAmmo = 30;
+
+    // مراجع لمجسمات الأسلحة في يد الشخصية
+    public GameObject swordModel;
+    public GameObject pistolModel;
+    public GameObject rifleModel;
+    public GameObject ropeModel;
+
+    // وظيفة تبديل السلاح (يتم استدعاؤها عند الضغط على زر في الحقيبة)
+    public void SelectWeapon(string weaponName)
+    {
+        // إخفاء جميع الأسلحة أولاً
+        DeactivateAllWeapons();
+
+        switch (weaponName)
+        {
+            case "Sword":
+                currentWeapon = WeaponType.Sword;
+                swordModel.SetActive(true);
+                Debug.Log("تم تجهيز السيف - مستعد للهجوم القريب");
+                break;
+            case "Pistol":
+                currentWeapon = WeaponType.Pistol;
+                pistolModel.SetActive(true);
+                Debug.Log("تم تجهيز المسدس - الذخيرة: " + pistolAmmo);
+                break;
+            case "Rifle":
+                currentWeapon = WeaponType.Rifle;
+                rifleModel.SetActive(true);
+                Debug.Log("تم تجهيز الكلاشينكوف - الذخيرة: " + rifleAmmo);
+                break;
+            case "Rope":
+                currentWeapon = WeaponType.ClimbingRope;
+                ropeModel.SetActive(true);
+                Debug.Log("تم تجهيز حبل التسلق - اقترب من شجرة أو جبل");
+                break;
+        }
+    }
+
+    // وظيفة الزر الأيمن (الضرب / الإطلاق / التسلق)
+    public void UseCurrentWeapon()
+    {
+        if (currentWeapon == WeaponType.Sword) {
+            Debug.Log("هجوم بالسيف!");
+        } 
+        else if (currentWeapon == WeaponType.Pistol && pistolAmmo > 0) {
+            Debug.Log("إطلاق نار من المسدس!");
+            pistolAmmo--;
+        } 
+        else if (currentWeapon == WeaponType.Rifle && rifleAmmo > 0) {
+            Debug.Log("إطلاق نار آلي!");
+            rifleAmmo--;
+        } 
+        else if (currentWeapon == WeaponType.ClimbingRope) {
+            Debug.Log("محاولة التشبث للتسلق...");
+            // هنا يتم تفعيل فيزياء التسلق
+        }
+        else {
+            Debug.Log("لا يوجد سلاح مجهز أو الذخيرة نفدت!");
+        }
+    }
+
+    void DeactivateAllWeapons() {
+        swordModel.SetActive(false);
+        pistolModel.SetActive(false);
+        rifleModel.SetActive(false);
+        ropeModel.SetActive(false);
+    }
+}
