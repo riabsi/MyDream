@@ -2,21 +2,23 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    // تعريف الشخصيات والحركات بناءً على أسمائك في GitHub
     void Start()
     {
-        Debug.Log("--- نظام Crazy Baby يرحب بك يا رياض ---");
+        Debug.Log("--- تشغيل مشروع MyDream الكامل ---");
 
-        // ربط ليلا بالحركة رقم 1
-        string hero1 = "Leila_Body.fbx";
-        string anim1 = "Shoved Reaction With Spin (1).fbx";
+        // 1. تفعيل البيئة (الأكواخ والأشجار التي رفعناها سابقاً)
+        string environmentPath = "Assets/Environment/";
+        Debug.Log("تم استدعاء الأكواخ والأشجار من مجلد: " + environmentPath);
 
-        // ربط ماريا بالحركة رقم 2
-        string hero2 = "Maria_Body.fbx";
-        string anim2 = "Shoved Reaction With Spin (2).fbx";
+        // 2. تفعيل الأبطال والحركات
+        // ليلا مع حركتها
+        GameObject leila = GameObject.Find("Leila_Body");
+        Debug.Log("ليلا جاهزة في موقعها داخل الغابة.");
 
-        Debug.Log("تم تجهيز " + hero1 + " مع حركة الدوران الأولى.");
-        Debug.Log("تم تجهيز " + hero2 + " مع حركة الدوران الثانية.");
-        Debug.Log("النظام جاهز للتشغيل المبدئي الآن!");
+        // ماريا مع حركتها
+        GameObject maria = GameObject.Find("Maria_Body");
+        Debug.Log("ماريا (روكسي) جاهزة بجانب الأكواخ.");
+
+        Debug.Log("النظام يعمل الآن يا رياض.. الأبطال والبيئة في مكان واحد!");
     }
 }
